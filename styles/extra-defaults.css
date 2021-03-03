@@ -1,0 +1,15 @@
+#root *,
+#__next * {
+  appearance: none;
+  object-fit: scale-down;
+}
+
+body,
+#root *:not(.grid),
+#__next *:not(.grid) {
+  display: flex;
+}
+
+button {
+  border: none
+}

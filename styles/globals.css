@@ -1,0 +1,18 @@
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
+
+@import "./extra-defaults.css";
+
+.layout-shadow {
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  @apply bg-gray-300;
+  justify-content: center;
+}
+
+#root,
+#__next {
+  @apply shadow-xl mx-auto;
+}
