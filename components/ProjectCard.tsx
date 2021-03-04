@@ -23,7 +23,7 @@ export const ProjectCard = ({ project }: { project: Project }) =>
       {project.tags.map(it => <ProjectTagView key={it.text} tag={it}/>)}
     </div>
     <div
-      className={`bg-white shadow rounded-lg bg-bottom p-4 gap-2 flex-col ${project.demoImage ? "h-full" : "h-64"} bg-contain bg-no-repeat`}
+      className={`bg-white shadow rounded-lg bg-bottom p-4 gap-2 flex-col ${project.demoImage ? "h-full" : "h-60"} bg-contain bg-no-repeat`}
       style={{ backgroundImage: `url(${project.demoImage})` }}
     >
       <span className="text-3xl font-medium">{project.title}</span>
@@ -32,10 +32,10 @@ export const ProjectCard = ({ project }: { project: Project }) =>
         {project.links.map(it =>
           <Button
             key={it.url}
-            style={`text-2xl font-medium items-center ${it.style}`}
+            style={`text-xl font-medium items-center ${it.style}`}
             onClick={() => window.open(it.url, "_blank")}
           >
-            <Image src={it.icon} alt={it.alt} width={32} height={32}/>
+            <Image src={it.icon} alt={it.alt} width={24} height={24}/>
             {it.name}
           </Button>
         )}
