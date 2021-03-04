@@ -5,8 +5,7 @@
 }
 
 body,
-#root *:not(.grid),
-#__next *:not(.grid) {
+#__next *:not(.grid):not(.line-clamp-1):not(.line-clamp-2):not(.line-clamp-3):not(.line-clamp-4):not(.line-clamp-5) {
   display: flex;
 }
 

@@ -27,7 +27,7 @@ export const ProjectCard = ({ project }: { project: Project }) =>
       style={{ width: "35rem", backgroundImage: `url(${project.demoImage})` }}
     >
       <span className="text-3xl font-medium">{project.title}</span>
-      <span className="max-h-28">{project.description}</span>
+      <span className="line-clamp-4 max-h-28">{project.description}</span>
       <div className="flex-row-reverse mt-auto gap-4">
         {project.links.map(it =>
           <Button

@@ -17,5 +17,7 @@ module.exports = {
       margin: ["hover"],
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/line-clamp")
+  ],
 }
