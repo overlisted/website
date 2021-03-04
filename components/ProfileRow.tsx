@@ -2,7 +2,7 @@ import {Profile} from "types/profile";
 import Image from "next/image";
 
 export const ProfileRow = ({ profile }: { profile: Profile }) =>
-  <div className="gap-2 flex-row-reverse items-center">
+  <div className={`gap-2 flex-row-reverse items-center ${profile.icon ? "" : "pl-8"}`}>
     {profile.url
       ? <a href={profile.url} target="_blank" className="hover:text-indigo-600">{profile.user}</a>
       : profile.user
