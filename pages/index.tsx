@@ -2,6 +2,8 @@ import {Project} from "types/project";
 import {Profile} from "types/profile";
 import {ProfileRow} from "components/ProfileRow";
 import {ProjectCard} from "components/ProjectCard";
+import {GetStaticProps} from "next";
+import {getJson, getText} from "lib/getJson";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) =>
   <section className="flex-col p-4 gap-6 bg-gray-200 items-center">
@@ -11,57 +13,30 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) =>
     </div>
   </section>;
 
-const aboutText = "Hello there! I'm a young programmer, and I just enjoy messing around with computers. Occasionally, I also try to do UI design (this whole site is designed by me).";
-const TopSection = ({ profiles }: { profiles: Profile[] }) =>
+const TopSection = ({ about, profiles }: { about: string, profiles: Profile[] }) =>
   <section className="bg-white p-4 flex-col gap-4 layout-shadow z-10">
     <span className="text-4xl font-medium">overlisted</span>
     <div className="gap-10" style={{ width: "72rem" }}>
-      {aboutText}
+      {about}
       <div className="gap-2 flex-col min-w-max">
         {profiles.map(it => <ProfileRow key={it.url ?? `${it.user}@${it.service}`} profile={it}/>)}
       </div>
     </div>
   </section>;
 
-const projects: Project[] = [{
-  title: "You Don't Need JavaScript",
-  description: "Some examples proving that JavaScript might in fact not be needed for your website and that CSS is nowadays already powerful enough.",
-  links: [
-    {
-      icon: "/github.png",
-      alt: "GitHub",
-      style: "bg-github text-white",
-      name: "Repository",
-      url: "https://github.com/you-dont-need/You-Dont-Need-JavaScript"
-    },
-    {
-      icon: "/npm.png",
-      alt: "NPM",
-      style: "bg-white text-npm border-2 border-solid border-npm",
-      name: "Package",
-      url: "https://npmjs.com/you-dont-need-javascript"
+const Home = ({ about, profiles, projects }: { about: string, profiles: Profile[], projects: Project[] }) =>
+  <div className="flex-col">
+    <TopSection about={about} profiles={profiles}/>
+    <ProjectsSection projects={projects}/>
+  </div>
+
+export const getStaticProps: GetStaticProps = async () =>
+  ({
+    props: {
+      about: await getText("data/about.txt"),
+      profiles: await getJson("data/profiles.json"),
+      projects: await getJson("data/projects.json")
     }
-  ],
-  tags: [
-    { color: { red: 0x1d, green: 0xd5, blue: 0x36 }, text: "Maintained" },
-    { color: { red: 0x56, green: 0x3d, blue: 0x7d }, text: "CSS" },
-    { color: { red: 0x08, green: 0x3f, blue: 0xa1 }, text: "Markdown" }
-  ]
-}];
-
-projects[1] = projects[0]
-projects[2] = projects[0]
-
-const profiles: Profile[] = [{
-  icon: "/github-black.png",
-  service: "GitHub",
-  user: "overlisted",
-  url: "http://github.com/overlisted"
-}];
-
-const Home = () => <div className="flex-col">
-  <TopSection profiles={profiles}/>
-  <ProjectsSection projects={projects}/>
-</div>
+  })
 
 export default Home;
