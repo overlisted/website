@@ -1,6 +1,6 @@
 import {Project} from "types/project";
-import {Account} from "types/account";
-import {AccountRow} from "components/AccountRow";
+import {Profile} from "types/profile";
+import {ProfileRow} from "components/ProfileRow";
 import {ProjectCard} from "components/ProjectCard";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) =>
@@ -12,13 +12,13 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) =>
   </section>;
 
 const aboutText = "Hello there! I'm a young programmer, and I just enjoy messing around with computers. Occasionally, I also try to do UI design (this whole site is designed by me).";
-const TopSection = ({ accounts }: { accounts: Account[] }) =>
+const TopSection = ({ profiles }: { profiles: Profile[] }) =>
   <section className="bg-white p-4 flex-col gap-4 layout-shadow z-10">
     <span className="text-4xl font-medium">overlisted</span>
     <div className="gap-10" style={{ width: "72rem" }}>
       {aboutText}
       <div className="gap-2 flex-col min-w-max">
-        {accounts.map(it => <AccountRow key={it.url ?? `${it.user}@${it.service}`} account={it}/>)}
+        {profiles.map(it => <ProfileRow key={it.url ?? `${it.user}@${it.service}`} profile={it}/>)}
       </div>
     </div>
   </section>;
@@ -52,7 +52,7 @@ const projects: Project[] = [{
 projects[1] = projects[0]
 projects[2] = projects[0]
 
-const accounts: Account[] = [{
+const profiles: Profile[] = [{
   icon: "/github-black.png",
   service: "GitHub",
   user: "overlisted",
@@ -60,7 +60,7 @@ const accounts: Account[] = [{
 }];
 
 const Home = () => <div className="flex-col">
-  <TopSection accounts={accounts}/>
+  <TopSection profiles={profiles}/>
   <ProjectsSection projects={projects}/>
 </div>
 
