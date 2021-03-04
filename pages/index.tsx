@@ -18,7 +18,7 @@ const TopSection = ({ about, profiles }: { about: string, profiles: Profile[] })
     <span className="text-4xl font-medium">overlisted</span>
     <div className="gap-10" style={{ width: "72rem" }}>
       {about}
-      <div className="gap-2 flex-col min-w-max">
+      <div className="gap-2 flex-col min-w-max items-start">
         {profiles.map(it => <ProfileRow key={it.url ?? `${it.user}@${it.service}`} profile={it}/>)}
       </div>
     </div>
