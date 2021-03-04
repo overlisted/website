@@ -21,5 +21,6 @@ export type Project = {
   title: string,
   description: string,
   links: ProjectLink[],
-  tags: ProjectTag[]
+  tags: ProjectTag[],
+  demoImage?: string
 }

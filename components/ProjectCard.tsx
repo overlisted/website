@@ -18,13 +18,16 @@ const ProjectTagView = ({ tag }: { tag: ProjectTag } ) =>
   </div>;
 
 export const ProjectCard = ({ project }: { project: Project }) =>
-  <div className="flex-col">
+  <div className={`flex-col ${project.demoImage ? "row-span-2" : ""}`}>
     <div className="px-4 gap-2">
       {project.tags.map(it => <ProjectTagView key={it.text} tag={it}/>)}
     </div>
-    <div className="bg-white shadow rounded-lg bg-bottom p-4 gap-2 flex-col h-64" style={{ width: "35rem" }}>
+    <div
+      className={`bg-white shadow rounded-lg bg-bottom p-4 gap-2 flex-col ${project.demoImage ? "h-full" : "h-64"} bg-contain bg-no-repeat`}
+      style={{ width: "35rem", backgroundImage: `url(${project.demoImage})` }}
+    >
       <span className="text-3xl font-medium">{project.title}</span>
-      {project.description}
+      <span className="max-h-28">{project.description}</span>
       <div className="flex-row-reverse mt-auto gap-4">
         {project.links.map(it =>
           <Button
