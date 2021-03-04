@@ -24,7 +24,7 @@ export const ProjectCard = ({ project }: { project: Project }) =>
     </div>
     <div
       className={`bg-white shadow rounded-lg bg-bottom p-4 gap-2 flex-col ${project.demoImage ? "h-full" : "h-64"} bg-contain bg-no-repeat`}
-      style={{ width: "35rem", backgroundImage: `url(${project.demoImage})` }}
+      style={{ backgroundImage: `url(${project.demoImage})` }}
     >
       <span className="text-3xl font-medium">{project.title}</span>
       <span className="line-clamp-4 max-h-28">{project.description}</span>

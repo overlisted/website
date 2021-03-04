@@ -16,7 +16,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) =>
 const TopSection = ({ about, profiles }: { about: string, profiles: Profile[] }) =>
   <section className="bg-white p-4 flex-col gap-4 layout-shadow z-10">
     <span className="text-4xl font-medium">overlisted</span>
-    <div className="gap-10" style={{ width: "72rem" }}>
+    <div className="gap-10">
       {about}
       <div className="gap-2 flex-col min-w-max items-start">
         {profiles.map(it => <ProfileRow key={it.url ?? `${it.user}@${it.service}`} profile={it}/>)}
@@ -25,7 +25,7 @@ const TopSection = ({ about, profiles }: { about: string, profiles: Profile[] })
   </section>;
 
 const Home = ({ about, profiles, projects }: { about: string, profiles: Profile[], projects: Project[] }) =>
-  <div className="flex-col">
+  <div className="flex-col max-w-6xl">
     <TopSection about={about} profiles={profiles}/>
     <ProjectsSection projects={projects}/>
   </div>
