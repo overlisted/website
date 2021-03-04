@@ -17,7 +17,7 @@ const TopSection = ({ accounts }: { accounts: Account[] }) =>
     <span className="text-4xl font-medium">overlisted</span>
     <div className="gap-10" style={{ width: "72rem" }}>
       {aboutText}
-      <div className="gap-2 grid-cols-1">
+      <div className="gap-2 flex-col min-w-max">
         {accounts.map(it => <AccountRow key={it.url ?? `${it.user}@${it.service}`} account={it}/>)}
       </div>
     </div>
