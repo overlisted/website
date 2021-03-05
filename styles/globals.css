@@ -1,6 +1,5 @@
 @import "tailwindcss/base";
 @import "tailwindcss/utilities";
-
 @import "./extra-defaults.css";
 
 .layout-shadow {
@@ -9,6 +8,7 @@
 
 body {
   @apply bg-gray-300;
+
   justify-content: center;
 }
 
