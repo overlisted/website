@@ -1,29 +1,37 @@
-import {Color, Project, ProjectTag} from "types/project";
-import {Button} from "./Button.tsx";
+import { Color, Project, ProjectTag } from "types/project";
+import { Button } from "./Button";
 import Image from "next/image";
+import { FC } from "react";
 
 const rgbComponentToHex = (component: number) => component.toString(16).padStart(2, "0");
-const colorToHex = ({red, green, blue}: Color) =>
+const colorToHex = ({ red, green, blue }: Color) =>
   `#${rgbComponentToHex(red)}${rgbComponentToHex(green)}${rgbComponentToHex(blue)}`;
 
-const ProjectTagView = ({ tag }: { tag: ProjectTag } ) =>
+const fullGrayComponent = 128;
+const isBright = ({ red, green, blue }: Color) =>
+  red >= fullGrayComponent && green >= fullGrayComponent && blue >= fullGrayComponent;
+
+const ProjectTagView = ({ tag }: { tag: ProjectTag }) =>
   <div
-    className={`rounded-t-md px-2 py-1 shadow-md font-medium select-none`}
+    className={"rounded-t-md px-2 py-1 shadow-md font-medium select-none"}
     style={{
       backgroundColor: colorToHex(tag.color),
-      color: tag.color.red >= 128 && tag.color.green >= 128 && tag.color.blue >= 128 ? "black" : "white"
+      color: isBright(tag.color) ? "black" : "white"
     }}
   >
     {tag.text}
   </div>;
 
-export const ProjectCard = ({ project }: { project: Project }) =>
+export const ProjectCard: FC<{ project: Project }> = ({ project }) =>
   <div className={`flex-col ${project.demoImage ? "row-span-2" : ""}`}>
     <div className="px-4 gap-2">
       {project.tags.map(it => <ProjectTagView key={it.text} tag={it}/>)}
     </div>
     <div
-      className={`bg-white shadow rounded-lg bg-bottom p-4 gap-2 flex-col ${project.demoImage ? "h-full" : "h-60"} bg-contain bg-no-repeat`}
+      className={`
+        bg-white shadow rounded-lg bg-bottom p-4 gap-2 flex-col bg-contain bg-no-repeat
+        ${project.demoImage ? "h-full" : "h-60"}
+      `}
       style={{ backgroundImage: `url(${project.demoImage})` }}
     >
       <span className="text-3xl font-medium">{project.title}</span>
@@ -37,8 +45,7 @@ export const ProjectCard = ({ project }: { project: Project }) =>
           >
             <Image src={it.icon} alt={it.alt} width={24} height={24}/>
             {it.name}
-          </Button>
-        )}
+          </Button>)}
       </div>
     </div>
   </div>;

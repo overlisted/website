@@ -1,9 +1,10 @@
-import {Project} from "types/project";
-import {Profile} from "types/profile";
-import {ProfileRow} from "components/ProfileRow";
-import {ProjectCard} from "components/ProjectCard";
-import {GetStaticProps} from "next";
-import {getJson, getText} from "lib/getJson";
+import { Project } from "types/project";
+import { Profile } from "types/profile";
+import { ProfileRow } from "components/ProfileRow";
+import { ProjectCard } from "components/ProjectCard";
+import { GetStaticProps } from "next";
+import { getJson, getText } from "lib/getJson";
+import { FC } from "react";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) =>
   <section className="flex-col p-4 gap-6 bg-gray-200 items-center">
@@ -24,11 +25,11 @@ const TopSection = ({ about, profiles }: { about: string, profiles: Profile[] })
     </div>
   </section>;
 
-const Home = ({ about, profiles, projects }: { about: string, profiles: Profile[], projects: Project[] }) =>
+const Home: FC<{ about: string, profiles: Profile[], projects: Project[] }> = ({ about, profiles, projects }) =>
   <div className="flex-col max-w-6xl">
     <TopSection about={about} profiles={profiles}/>
     <ProjectsSection projects={projects}/>
-  </div>
+  </div>;
 
 export const getStaticProps: GetStaticProps = async () =>
   ({
@@ -37,6 +38,6 @@ export const getStaticProps: GetStaticProps = async () =>
       profiles: await getJson("data/profiles.json"),
       projects: await getJson("data/projects.json")
     }
-  })
+  });
 
 export default Home;

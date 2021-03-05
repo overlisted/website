@@ -1,6 +1,6 @@
 export type Profile = {
-  icon?: string,
-  service: string,
-  user: string,
-  url?: string
-}
+  icon?: string;
+  service: string;
+  user: string;
+  url?: string;
+};
