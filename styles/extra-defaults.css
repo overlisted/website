@@ -12,3 +12,8 @@ body,
 button {
   border: none;
 }
+
+html,
+body {
+  min-height: 100vh;
+}
