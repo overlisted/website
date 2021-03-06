@@ -97,7 +97,10 @@
     "id-match": "error",
     "indent": [
       "error",
-      2
+      2,
+      {
+        "offsetTernaryExpressions": true
+      }
     ],
     "init-declarations": "error",
     "jsx-quotes": "error",
@@ -170,7 +173,6 @@
     "no-buffer-constructor": "error",
     "no-caller": "error",
     "no-catch-shadow": "error",
-    "no-confusing-arrow": "error",
     "no-console": "error",
     "no-constructor-return": "error",
     "no-continue": "error",
