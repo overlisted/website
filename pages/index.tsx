@@ -9,6 +9,7 @@ import { FC, useState } from "react";
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const [query, setQuery] = useState("");
   const projectsFiltered = projects.filter(it => it.title.includes(query) || it.description.includes(query));
+  const anythingFound = projectsFiltered.length > 0;
 
   return (
     <section className="flex-col p-4 gap-6 bg-gray-200 items-center">
@@ -19,10 +20,13 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
           value={query}
           onChange={e => setQuery(e.target.value)}
           placeholder="Search projects..."
-          className="border-gray-400 border bg-transparent rounded p-1 justify-self-end"
+          className={`
+            ${anythingFound ? "border-gray-400" : "border-red-600"} 
+            border bg-transparent rounded p-1 justify-self-end
+          `}
         />
       </div>
-      {projectsFiltered.length > 0
+      {anythingFound
         ? <div className="grid grid-cols-2 gap-y-4 gap-x-8">
             {projectsFiltered.map(it => <ProjectCard key={it.title} project={it}/>)}
           </div>
