@@ -9,7 +9,7 @@ const colorToHex = ({ red, green, blue }: Color) =>
 
 const fullGrayComponent = 128;
 const isBright = ({ red, green, blue }: Color) =>
-  red >= fullGrayComponent && green >= fullGrayComponent && blue >= fullGrayComponent;
+  red >= fullGrayComponent || green >= fullGrayComponent || blue >= fullGrayComponent;
 
 const ProjectTagView = ({ tag }: { tag: ProjectTag }) =>
   <div
