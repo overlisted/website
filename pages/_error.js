@@ -1,5 +1,5 @@
 const ErrorPage = ({ code }) =>
-  <div className="p-12 my-auto flex-col items-center bg-white">
+  <div className="p-12 my-auto shadow-xl flex-col items-center bg-white">
     {code
       ? <>
           <span className="text-xl">{code}</span>

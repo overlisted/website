@@ -5,6 +5,7 @@
 }
 
 body,
+#__next,
 #__next *:not(.grid):not(.line-clamp-1):not(.line-clamp-2):not(.line-clamp-3):not(.line-clamp-4):not(.line-clamp-5) {
   display: flex;
 }
@@ -14,6 +15,7 @@ button {
 }
 
 html,
-body {
+body,
+#__next {
   min-height: 100vh;
 }

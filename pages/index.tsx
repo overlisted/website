@@ -8,10 +8,11 @@ import { FC, useState } from "react";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const [query, setQuery] = useState("");
+  const projectsFiltered = projects.filter(it => it.title.includes(query) || it.description.includes(query));
 
   return (
-    <section className="flex-col p-4 gap-6 bg-gray-200 items-stretch">
-      <div className="grid grid-cols-3">
+    <section className="flex-col p-4 gap-6 bg-gray-200 items-center">
+      <div className="grid grid-cols-3 w-full">
         <div/>
         <span className="text-2xl font-medium justify-self-center">Hall of My Projects</span>
         <input
@@ -21,12 +22,13 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
           className="border-gray-400 border bg-transparent rounded p-1 justify-self-end"
         />
       </div>
-      <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-        {projects
-          .filter(it => it.title.includes(query) || it.description.includes(query))
-          .map(it => <ProjectCard key={it.title} project={it}/>)
-        }
-      </div>
+      {projectsFiltered.length > 0
+        ? <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+            {projectsFiltered.map(it => <ProjectCard key={it.title} project={it}/>)}
+          </div>
+        : <span className="py-8">Nothing was found</span>
+      }
+
     </section>
   );
 };
@@ -43,7 +45,7 @@ const TopSection = ({ about, profiles }: { about: string, profiles: Profile[] })
   </section>;
 
 const Home: FC<{ about: string, profiles: Profile[], projects: Project[] }> = ({ about, profiles, projects }) =>
-  <div className="flex-col max-w-6xl">
+  <div className="flex-col max-w-6xl shadow-xl mb-auto">
     <TopSection about={about} profiles={profiles}/>
     <ProjectsSection projects={projects}/>
   </div>;

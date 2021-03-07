@@ -11,7 +11,13 @@ const App = ({ Component, pageProps }) => <>
     <meta name="robots" content="all" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
   </Head>
-  <Component {...pageProps} />
+  <div className="flex-grow">
+    <Component {...pageProps} />
+  </div>
+  <footer className="flex items-center my-6 flex-col">
+    <strong>Stealing is bad</strong>
+    Designed and implemented by overlisted
+  </footer>
 </>;
 
 export default App;

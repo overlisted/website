@@ -8,11 +8,13 @@
 
 body {
   @apply bg-gray-300;
-
-  justify-content: center;
 }
 
 #root,
 #__next {
-  @apply shadow-xl mx-auto;
+  @apply mx-auto;
+}
+
+#__next {
+  flex-direction: column;
 }
