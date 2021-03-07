@@ -6,9 +6,11 @@ import { GetStaticProps } from "next";
 import { getJson, getText } from "lib/getJson";
 import { FC, useState } from "react";
 
+const includesIgnoreCase = (a: string, b: string) => a.toLowerCase().includes(b.toLowerCase());
+
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const [query, setQuery] = useState("");
-  const projectsFiltered = projects.filter(it => it.title.includes(query) || it.description.includes(query));
+  const projectsFiltered = projects.filter(it => includesIgnoreCase(it.title, query) || includesIgnoreCase(it.description, query));
   const anythingFound = projectsFiltered.length > 0;
 
   return (
