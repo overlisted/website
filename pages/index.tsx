@@ -4,15 +4,32 @@ import { ProfileRow } from "components/ProfileRow";
 import { ProjectCard } from "components/ProjectCard";
 import { GetStaticProps } from "next";
 import { getJson, getText } from "lib/getJson";
-import { FC } from "react";
+import { FC, useState } from "react";
 
-const ProjectsSection = ({ projects }: { projects: Project[] }) =>
-  <section className="flex-col p-4 gap-6 bg-gray-200 items-center">
-    <span className="text-2xl font-medium">Hall of My Projects</span>
-    <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-      {projects.map(it => <ProjectCard key={it.title} project={it}/>)}
-    </div>
-  </section>;
+const ProjectsSection = ({ projects }: { projects: Project[] }) => {
+  const [query, setQuery] = useState("");
+
+  return (
+    <section className="flex-col p-4 gap-6 bg-gray-200 items-stretch">
+      <div className="grid grid-cols-3">
+        <div/>
+        <span className="text-2xl font-medium justify-self-center">Hall of My Projects</span>
+        <input
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="Search projects..."
+          className="border-gray-400 border bg-transparent rounded p-1 justify-self-end"
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+        {projects
+          .filter(it => it.title.includes(query) || it.description.includes(query))
+          .map(it => <ProjectCard key={it.title} project={it}/>)
+        }
+      </div>
+    </section>
+  );
+};
 
 const TopSection = ({ about, profiles }: { about: string, profiles: Profile[] }) =>
   <section className="bg-white p-4 flex-col gap-4 layout-shadow z-10">
