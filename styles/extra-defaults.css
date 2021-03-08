@@ -4,9 +4,7 @@
   object-fit: scale-down;
 }
 
-body,
-#__next,
-#__next *:not(.grid):not(.line-clamp-1):not(.line-clamp-2):not(.line-clamp-3):not(.line-clamp-4):not(.line-clamp-5) {
+html *:not(head *):not(script):not(style) {
   display: flex;
 }
 
