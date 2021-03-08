@@ -14,3 +14,4 @@ yarn-error.log*
 .vercel
 .idea
 data
+public/demo-images
