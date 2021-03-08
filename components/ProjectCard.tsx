@@ -13,7 +13,7 @@ const isBright = ({ red, green, blue }: Color) =>
 
 const ProjectTagView = ({ tag }: { tag: ProjectTag }) =>
   <div
-    className={"rounded-t-md px-2 py-1 shadow-md font-medium select-none"}
+    className={"rounded-t-md px-2 py-1 shadow-md select-none"}
     style={{
       backgroundColor: colorToHex(tag.color),
       color: isBright(tag.color) ? "black" : "white"
