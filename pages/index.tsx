@@ -14,7 +14,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const anythingFound = projectsFiltered.length > 0;
 
   return (
-    <section className="flex-col p-4 gap-6 bg-gray-200 items-center">
+    <section className="flex-col p-4 gap-6 bg-gray-200 items-stretch">
       <div className="grid grid-cols-3 w-full">
         <div/>
         <span className="text-2xl font-medium justify-self-center">Hall of My Projects</span>
