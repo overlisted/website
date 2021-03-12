@@ -15,21 +15,21 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
 
   return (
     <section className="flex-col p-4 gap-6 bg-gray-200 items-stretch">
-      <div className="grid grid-cols-3 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3 w-full">
         <div/>
-        <span className="text-2xl font-medium justify-self-center">Hall of My Projects</span>
+        <span className="text-2xl col-start-1 md:col-start-2 font-medium md:justify-self-center">Hall of My Projects</span>
         <input
           value={query}
           onChange={e => setQuery(e.target.value)}
           placeholder="Search projects..."
           className={`
             ${anythingFound ? "border-gray-400" : "border-red-600"} 
-            border bg-transparent rounded p-1 justify-self-end
+            border bg-transparent rounded p-1 justify-self-end w-8/12
           `}
         />
       </div>
       {anythingFound
-        ? <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+        ? <div className="grid md:grid-cols-2 gap-y-4 gap-x-8">
             {projectsFiltered.map(it => <ProjectCard key={it.title} project={it}/>)}
           </div>
         : <span className="py-8">Nothing was found</span>
