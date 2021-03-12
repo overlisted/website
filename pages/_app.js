@@ -5,7 +5,10 @@ const App = ({ Component, pageProps }) => <>
   <Head>
     <title>overlisted</title>
     <meta name="author" content="overlisted, mail@overlisted.net" />
-    <meta name="description" content="My personal website" />
+    <meta
+      name="description"
+      content="My personal website. Includes all of my public projects and links to my social media."
+    />
     <meta name="theme-color" content="#00ce87" />
     <meta name="color-scheme" content="only light" />
     <meta name="robots" content="all" />
