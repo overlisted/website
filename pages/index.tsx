@@ -41,7 +41,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
 
 const TopSection = ({ about, profiles }: { about: string, profiles: Profile[] }) =>
   <section className="bg-white p-4 flex-col gap-4 layout-shadow z-10">
-    <span className="text-4xl font-medium">overlisted</span>
+    <span className="text-3xl font-medium">overlisted</span>
     <div className="gap-10">
       {about}
       <div className="gap-2 flex-col min-w-max items-start">

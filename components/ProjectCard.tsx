@@ -30,11 +30,11 @@ export const ProjectCard: FC<{ project: Project }> = ({ project }) =>
     <div
       className={`
         bg-white shadow rounded-lg bg-bottom p-4 gap-2 flex-col bg-contain bg-no-repeat
-        ${project.demoImage ? "h-full" : "h-60"}
+        ${project.demoImage ? "h-full" : "h-56"}
       `}
       style={{ backgroundImage: `url(${project.demoImage})` }}
     >
-      <span className="text-3xl font-medium">{project.title}</span>
+      <span className="text-2xl font-medium">{project.title}</span>
       <span className="line-clamp-4 max-h-28">{project.description}</span>
       <div className="flex-row-reverse mt-auto gap-4">
         {project.links.map(it =>
