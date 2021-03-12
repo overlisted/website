@@ -23,4 +23,8 @@ const App = ({ Component, pageProps }) => <>
   </footer>
 </>;
 
+export const reportWebVitals = metric => {
+  if(metric.label === "web-vital") console.info(`Web Vitals: ${metric.name} ${metric.value}`);
+}
+
 export default App;
